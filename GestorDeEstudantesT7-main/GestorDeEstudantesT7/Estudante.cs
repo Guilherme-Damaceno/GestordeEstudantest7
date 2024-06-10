@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using GestorDeEstudantesT7;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,7 +14,7 @@ namespace GestorDeEstudantesT7
     {
         MeuBancoDeDados meuBancoDeDados = new MeuBancoDeDados();
 
-        public bool inserirEstudante(string nome, string sobrenome, DateTime nascimento, 
+        public bool inserirEstudante(string nome, string sobrenome, DateTime nascimento,
             string telefone, string genero, string endereco, MemoryStream foto)
         {
             // Removido `id` da lista de parâmetros a serem alterados.
@@ -30,7 +31,7 @@ namespace GestorDeEstudantesT7
 
             meuBancoDeDados.abrirConexao();
 
-            if(comando.ExecuteNonQuery() == 1)
+            if (comando.ExecuteNonQuery() == 1)
             {
                 meuBancoDeDados.fecharConexao();
                 return true;
@@ -83,5 +84,28 @@ namespace GestorDeEstudantesT7
                 return false;
             }
         }
+
+
+
+        // Apaga um estudante com base em seu ID.
+        public bool apagarEstudante(int id)
+    {
+        }
+        MySqlCommand comando = new MySqlCommand("DELETE FROM 'estudante' WHERE 'id'=@id");
+
+        comando.Parameters. Add"@id , MySqlDbType.Int32 = id;" +
+
+        MeuBancoDeDado.abrirConexao();
+        if (comando.ExecuteNonQuery(); == 1)
+
+        meuBancoDeDados.fecharConexao();
+        return false;
+
+        // RETORNA a tabela dos estudantes que estão no banco de dados. 
+        public DataTable GetEstudantes(MySqlCommand comando)
+        { 
+
+
+
     }
-}
+}   
